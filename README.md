@@ -9,14 +9,14 @@ GPUs can be overkill for edge devices. Running inference on a CPU would overload
 Fig. 1. Model performance. 
 
 Fig. 2. CPU and GPU interaction.
-We address this challenge by integrating the image‑sensor IC and the NPU IC into a single chip(a.k.a Zero‑Latent Vision IC). This unified architecture directly processes the 32×32 RGB analog image‑sensor output, performs on‑chip digitization using a SAR ADC, and immediately feeds the data to an NPU implementing a fixed‑weight CIFAR‑10 CNN (see Figure 3). By placing sensing, conversion, and inference in a single chip, the system functions as a sensor‑proximal edge‑AI engine with minimal power consumption and near‑zero data‑transfer latency.
+We address this challenge by integrating the image‑sensor IC and the NPU IC into a single chip(a.k.a Zero‑Latent Vision IC). This unified architecture directly processes the 28×28 analog image‑sensor output, performs on‑chip digitization using multiple single-slope ADCs, and immediately feeds the data to an NPU implementing a fixed‑weight MNIST FNN(see Figure 3). By placing sensing, conversion, and inference in a single chip, the system functions as a sensor‑proximal edge‑AI engine with minimal power consumption and near‑zero data‑transfer latency.
 This approach offloads computer‑vision tasks from the CPU and GPU, allowing them to focus on more computationally demanding workloads. The architecture is also inherently scalable: higher‑resolution sensors and more advanced models (e.g., YOLO‑based object detection) can be supported with additional design time and silicon resources.
 For this hackathon, however, we have only three days, so we implemented a simplified version of the concept to demonstrate feasibility within the time constraints.
 
 
 Fig. 3. High-level schematic.
 II. Technical Requirements. 
-The chip will be developed using the Cognichip AI platform, which automates the physical chip design process. Our primary responsibility is to create the RTL-level Verilog modules that define the system architecture, including the SAR ADC, memory buffer, NPU, and the top‑level control unit. Each module, as well as the fully integrated design, will be simulated and verified using Vivado Verilog. For the NPU block, we will generate synthesizable HDL using MATLAB HDL Coder rather than implementing the architecture manually.
+The chip will be developed using the Cognichip AI platform, which automates the physical chip design process. Our primary responsibility is to create RTL-level Verilog modules that define the system architecture, including multiple single-slope column ADCs, a memory buffer, an NPU, and the top‑level control unit. Each module, as well as the fully integrated design, will be simulated and verified using Vivado Verilog. For the NPU block, we will design the FNN MNIST from scratch 
 III. Roles
 
 Module
@@ -24,8 +24,9 @@ Description
 Tools
 Name
 Input,  SRAM
-Find out the testbench for the input that comes from the image sensor(32x32xRGB)
-SRAM 3KB Verilog module
+Find out the testbench for the input that comes from the image sensor(28x28)
+
+
 Verilog
 Dao
 ADC
@@ -34,11 +35,9 @@ https://www.youtube.com/watch?v=sHpjO-miYLI
 Verilog
 Quy
 NPU
-CNN CIFAR 10 image classification and HDL tools.
-https://www.kaggle.com/code/faressayah/cifar-10-images-classification-using-cnns-88
-Matlab
-
-
+FNN MNIST Verilog
+Verilog
+Joon
 Control
 FSM
 Verilog
