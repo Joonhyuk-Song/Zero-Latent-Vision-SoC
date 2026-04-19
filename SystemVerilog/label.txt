@@ -1,0 +1,29 @@
+Image 0 (Label: 5):
+  - Original (first 5): [0 0 0 0 0]
+  - Voltage  (first 5): [0. 0. 0. 0. 0.]
+  - Noisy    (first 5): [0.16215279 0.09399411 0.         0.         0.        ]
+  - Saved to: image_0_voltage_noisy.txt
+
+Image 1 (Label: 0):
+  - Original (first 5): [0 0 0 0 0]
+  - Voltage  (first 5): [0. 0. 0. 0. 0.]
+  - Noisy    (first 5): [0.         0.03418298 0.         0.08982553 0.        ]
+  - Saved to: image_1_voltage_noisy.txt
+
+Image 2 (Label: 4):
+  - Original (first 5): [0 0 0 0 0]
+  - Voltage  (first 5): [0. 0. 0. 0. 0.]
+  - Noisy    (first 5): [0.         0.         0.         0.02192599 0.        ]
+  - Saved to: image_2_voltage_noisy.txt
+
+Image 3 (Label: 1):
+  - Original (first 5): [0 0 0 0 0]
+  - Voltage  (first 5): [0. 0. 0. 0. 0.]
+  - Noisy    (first 5): [0.         0.15468392 0.10421216 0.00373623 0.01700386]
+  - Saved to: image_3_voltage_noisy.txt
+
+Image 4 (Label: 9):
+  - Original (first 5): [0 0 0 0 0]
+  - Voltage  (first 5): [0. 0. 0. 0. 0.]
+  - Noisy    (first 5): [0.14484677 0.17208985 0.13285883 0.04936386 0.15466543]
+  - Saved to: image_4_voltage_noisy.txt

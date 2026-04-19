@@ -1,0 +1,58 @@
+# Zero-Latency Vision SoC — MNIST Digit Classifier
+# DEPS.yml — Simulation dependency targets
+
+# DUT only (useful for synthesis checks)
+single_slope_adc_col:
+  deps:
+    - single_slope_adc_col.sv
+  top: single_slope_adc_col
+
+# Single-slope ADC digital control — DUT only
+single_slope_adc:
+  deps:
+    - single_slope_adc.sv
+  top: single_slope_adc
+
+# Single-slope ADC testbench simulation target
+tb_single_slope_adc:
+  deps:
+    - single_slope_adc.sv
+    - tb_single_slope_adc.sv
+  top: tb_single_slope_adc
+
+# CDS ADC testbench simulation target
+tb_cds_adc:
+  deps:
+    - single_slope_adc.sv
+    - cds_adc.sv
+    - tb_cds_adc.sv
+  top: tb_cds_adc
+
+# Full testbench simulation target
+tb_single_slope_adc_col:
+  deps:
+    - single_slope_adc_col.sv
+    - tb_single_slope_adc_col.sv
+  top: tb_single_slope_adc_col
+
+bench_system_top_noisy:
+  deps:
+    - x_ram.sv
+    - ReLu.sv
+    - Reg.sv
+    - comb_add.sv
+    - b_addr_gen.sv
+    - b_rom.sv
+    - w_addr_gen.sv
+    - w_rom.sv
+    - x_addr_gen.sv
+    - neuron.sv
+    - hidden_layer.sv
+    - softmax.sv
+    - FNN.sv
+    - single_slope_adc.sv
+    - cds_adc.sv
+    - control_unit.sv
+    - system_top.sv
+    - tb_system_top_noisy.sv
+  top: tb_system_top_noisy
